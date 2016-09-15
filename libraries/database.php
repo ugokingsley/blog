@@ -29,9 +29,9 @@ class Database{
 	}
 	 //select
 	 public function select($query){
-		$result=$this->link->query($query) or die ($this->link->error.__LINE__.);
+		$result=$this->link->query($query) or die ($this->link->error.__LINE__);
 		if ($result->num_rows > 0){
-			return $rsult;
+			return $result;
 			}else{
 			return false;
 		}
@@ -39,7 +39,7 @@ class Database{
 	 
 	 //insert
 	 public function insert($query){
-		$insert_row=$this->link->query($query) or die ($this->link->error.__LINE__.);
+		$insert_row=$this->link->query($query) or die ($this->link->error.__LINE__);
 		
 		//validate insert
 		if($insert_row){
@@ -52,7 +52,7 @@ class Database{
 	 
 	 //update
 	 public function update($query){
-		$update_row=$this->link->query($query) or die ($this->link->error.__LINE__.);
+		$update_row=$this->link->query($query) or die ($this->link->error.__LINE__);
 		
 		//validate delete
 		if($update_row){
@@ -66,7 +66,7 @@ class Database{
 	 
 	 //delete
 	 public function delete($query){
-		$insert_row=$this->link->query($query) or die ($this->link->error.__LINE__.);
+		$insert_row=$this->link->query($query) or die ($this->link->error.__LINE__);
 		
 		//validate delete
 		if($delete_row){
