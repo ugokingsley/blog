@@ -43,7 +43,7 @@ class Database{
 		
 		//validate insert
 		if($insert_row){
-			header("location:index.php?message= ".urldecode('Record Added'));
+			header("location:index.php?msg= ".urldecode('Record Added'));
 			}else{
 			die("Error:('.$this->link->errno.')".$this->link->error);
 		}
@@ -56,7 +56,7 @@ class Database{
 		
 		//validate delete
 		if($update_row){
-			header("location:index.php?message= ".urldecode('Record updated'));
+			header("location:index.php?msg= ".urldecode('Record updated'));
 			}else{
 			die("Error:('.$this->link->errno.')".$this->link->error);
 		}
@@ -66,11 +66,11 @@ class Database{
 	 
 	 //delete
 	 public function delete($query){
-		$insert_row=$this->link->query($query) or die ($this->link->error.__LINE__);
+		$delete_row=$this->link->query($query) or die ($this->link->error.__LINE__);
 		
 		//validate delete
 		if($delete_row){
-			header("location:index.php?message= ".urldecode('Record Delete'));
+			header("location:index.php?msg= ".urldecode('Record Deleted'));
 			}else{
 			die("Error:('.$this->link->errno.')".$this->link->error);
 		}
