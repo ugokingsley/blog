@@ -1,65 +1,104 @@
-<?php include 'includes/header.php'; ?>
-<?php 
-//create a database object
-$db=new Database;
-//create query
-$query="SELECT posts.*, categories.name FROM posts
-				INNER JOIN categories
-				ON posts.category=categories.id
-				ORDER BY posts.title DESC";
-//run query
-$posts=$db->select($query);
+<?php
+session_start();
 
+if(isset($_SESSION['user_session'])!="")
+{
+	header("Location: home.php");
+}
 
-//create query
-$query="SELECT * FROM categories ORDER BY name DESC";
-//run query
-$categories=$db->select($query);
-	
 ?>
-	
-<table class="table table-stripped">
-	<tr>
-		<th> Post ID</th>
-		<th> Post Title</th>
-		<th> Category</th>
-		<th> Author </th>
-		<th> Date </th>
-	</tr>
-	
-	<?php  while($row=$posts->fetch_assoc()) :?>
-	<tr>
-		<td><?php echo $row['id'] ;?></td>
-		<td><a href="edit_post.php?id=<?php echo $row['id'] ;?>"><?php echo $row['title'] ;?></a></td>
-		<td><?php echo $row['name'] ;?></td>
-		<td><?php echo $row['author'] ;?></td>
-		<td><?php echo formatDate($row['date']); ?></td>
-	</tr>
-	<?php  endwhile; ?>
-	
-</table>
-	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>admin login</title>
+<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+<link href="../css/bootstrap-theme.min.css" rel="stylesheet" media="screen"> 
+<script type="text/javascript" src="../js/jquery.js"></script>
+<script type="text/javascript" src="includes/validation.min.js"></script>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen">
+<script type="text/javascript" src="includes/script.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</head>
 
-<table class="table table-stripped">
-	<tr>
-		<th> Category ID</th>
-		<th> Category name</th>	
-	</tr>
-	<?php  while($row=$categories->fetch_assoc()) :?>
-	<tr>
-		<td><?php echo $row['id'] ;?></td>
-		<td><a href="edit_category.php?id=<?php echo $row['id'] ;?>"><?php echo $row['name'] ;?></a></td>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top" >
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">UNICAF ADMIN</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="index.php">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+		  
+        </div>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+<br/><br/>
+<div class="container-fluid" style="padding-top:50px;padding-bottom:0px">
+	
+</div>  
+
+
+
+<br/><br/>
+<div class="container-fluid" style="padding-top:50px;padding-bottom:0px">
+	
+</div>  
+<div class="sigin-form">
+
+
+	<div class="container">
+	<div class="jumbotron">
 		
-	</tr>
-	<?php  endwhile; ?>
-	
-</table>
-
-	
-<?php include 'includes/footer.php'; ?>
-
-          
-
-          
-
+		<h5><b><span><img src="images/1.jpg"/></span>
+		E-campus Portal is a robust campus management solution with 
+		everything needed to to completely automate a tertiary institution. 
+		It is currently the most robust campus educational institution management solution in Nigeria. 
+		</b></h5>
+	</div>
         
+       <form class="form-signin" method="post" id="login-form">
+      
+        <h2 class="form-signin-heading">Administrator.</h2><hr />
+        
+        <div id="error">
+        <!-- error will be shown here ! -->
+        </div>
+        
+        <div class="form-group">
+        <input type="text" class="form-control" placeholder="username" name="user_name" id="user_name" />
+        <span id="check-e"></span>
+        </div>
+        
+        <div class="form-group">
+        <input type="password" class="form-control" placeholder="Password" name="user_password" id="user_password" />
+        </div>
+       
+     	<hr />
+        
+        <div class="form-group">
+            <button type="submit" class="btn btn-default" name="submit" id="btn-login">
+    		<span class="glyphicon glyphicon-log-in"></span> &nbsp; Sign In
+			</button> 
+        </div>
+      </form>
+
+    </div>
+    
+</div>
+    
+
+
+</body>
+</html>

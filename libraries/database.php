@@ -76,6 +76,20 @@ class Database{
 		}
 	 }
 	 
+	 /**public function login($user_name,$user_password){
+		$this->db->query("SELECT * FROM user WHERE user_name=:username AND user_password=:password");
+		//bind values
+		$this->db->bind(':username',$user_name);
+		$this->db->bind(':password',$user_password);
+		$row=$this->db->single();
+		//check rows
+		if($this->db->rowCount()>0){
+			$this->setUserData($row);
+			return true;
+		}else{
+			return false;
+		}
+	 }*/
 	 
 	
 }
